@@ -23,20 +23,18 @@ Aunque el 31 de diciembre sea festivo, las horas extra se harán el mismo año y
 El método Date.getDay() te devuelve el día de la semana de una fecha. El 0 es domingo, el 1 es lunes, etc.
 0 -> domingo, 1 -> lunes, 2 -> martes, 3 -> miércoles, 4 -> jueves, 5 -> viernes, 6 -> sábado
 */
-
-function countHours(year: number, holidays: string[]): number {
+function countHours(year, holidays) {
   const holidaysFullDates = holidays.map((holiday) => {
-    const date: string = year.toString() + '/' + holiday;
+    const date = year.toString() + '/' + holiday;
     return new Date(date);
   });
-  const holidaysDays: number[] = holidaysFullDates.map((date) => date.getDay());
-  let counter: number = 0;
+  const holidaysDays = holidaysFullDates.map((date) => date.getDay());
+  let counter = 0;
   holidaysDays.map((day) => {
     if (day > 0 && day < 6) counter++;
   });
   return counter * 2;
 }
-
 console.log(countHours(2022, ['01/06', '04/01', '12/25']));
 console.log(countHours(2022, ['12/10', '12/17', '12/25'])); //ninguna hora extra
 console.log(countHours(2022, ['12/5', '12/16', '12/23'])); // 3 feriados, 6 horas extras

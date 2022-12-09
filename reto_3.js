@@ -19,17 +19,13 @@ Cosas a tener en cuenta:
 Las cajas de regalos no se pueden dividir.
 Los nombres de los regalos y los renos siempre serán mayores que 0.
 */
-
-function distributeGifts(packOfGifts: string[], reindeers: string[]): number {
-  let packOfGiftsWeight: number = 0;
+function distributeGifts(packOfGifts, reindeers) {
+  let packOfGiftsWeight = 0;
   packOfGifts.forEach((ele) => (packOfGiftsWeight += ele.length));
-
-  let reindeersCapacity: number = 0;
+  let reindeersCapacity = 0;
   reindeers.forEach((ele) => (reindeersCapacity += ele.length * 2));
-
   return Math.floor(reindeersCapacity / packOfGiftsWeight);
 }
-
 const packOfGifts = ['videogames', 'console'];
 const reindeers = ['midu'];
 console.log(distributeGifts(packOfGifts, reindeers));

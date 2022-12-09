@@ -17,25 +17,22 @@ console.log(wrapped)
 
   Como ves, el papel de regalo envuelve el string. Por arriba y por abajo, para no dejar ningún hueco, las esquinas también están cubiertas por el papel de regalo.
 
-Nota:El carácter 
+Nota:El carácter
 representa un salto de línea.
 
 ¡Ojo!Asegúrate que pones el número correcto de * para envolver completamente el string.
 
 ¡Suerte!
 */
-
-function wrapping(gifts: string[]) {
+function wrapping(gifts) {
   const wrappedGifts = gifts.map((ele) => {
-    const size: number = ele.length;
-    const left: string = "*".repeat(size + 2) + "\n" + "*";
-    const right: string = "*" + "\n" + "*".repeat(size + 2);
+    const size = ele.length;
+    const left = '*'.repeat(size + 2) + '\n' + '*';
+    const right = '*' + '\n' + '*'.repeat(size + 2);
     const singleWrappedGift = left + ele + right;
     return singleWrappedGift;
   });
-
   return wrappedGifts;
 }
-
-const gifts: string[] = ["book", "game", "socks"];
+const gifts = ['book', 'game', 'socks'];
 console.log(wrapping(gifts));

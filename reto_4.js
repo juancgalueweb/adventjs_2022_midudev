@@ -41,8 +41,7 @@ The boxes may come in any order.
 The boxes are not always squares, they could be rectangles.
 
 */
-
-function fitsInOneBox(boxes: TProps[]) {
+function fitsInOneBox(boxes) {
   const sortedBoxes = boxes.sort((a, b) => a.l - b.l);
   for (const index of sortedBoxes.keys()) {
     if (index === sortedBoxes.length - 1) return true;
@@ -58,17 +57,9 @@ function fitsInOneBox(boxes: TProps[]) {
   }
   return true;
 }
-
-type TProps = {
-  l: number;
-  w: number;
-  h: number;
-};
-
 const boxes = [
   { l: 1, w: 1, h: 1 },
   { l: 2, w: 2, h: 2 },
   { l: 3, w: 3, h: 3 },
 ];
-
 console.log(fitsInOneBox(boxes));
