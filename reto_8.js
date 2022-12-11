@@ -20,11 +20,10 @@ checkPart("midu") // false
 
 function checkPart(part) {
   const partArray = [...part];
-  const isPalidrome = (part) => {
-    const array1 = [...part];
-    const array2 = [];
-    for (const char of array1) array2.unshift(char);
-    return array1.join("").toLowerCase() === array2.join("").toLowerCase();
+  const isPalidrome = (word) => {
+    const right = [...word.slice(-(word.length / 2))].reverse().join("");
+    const left = word.slice(0, word.length / 2);
+    return right === left;
   };
   if (isPalidrome(part)) {
     return true;
