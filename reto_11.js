@@ -24,13 +24,28 @@ Ningun elfo ha sido maltradado durante la ejecución de este reto ni han tenido 
 */
 
 function getCompleted(part, total) {
-  const partArray = part.split(":");
+  const MCD = (a, b) => {
+    let temporal;
+    while (b) {
+      temporal = b;
+      b = a % b;
+      a = temporal;
+    }
+    return a;
+  };
+
+  const partArray = part.split(':');
   const partInSeconds =
     +partArray[0] * 60 * 60 + +partArray[1] * 60 + +partArray[2];
-  const partTotal = total.split(":");
+  const partTotal = total.split(':');
   const totalInSeconds =
     +partTotal[0] * 60 * 60 + +partTotal[1] * 60 + +partTotal[2];
-  return partInSeconds / totalInSeconds;
+
+  const MCDof = MCD(partInSeconds, totalInSeconds);
+  const partMinExpression = partInSeconds / MCDof;
+  const totalMinExpression = totalInSeconds / MCDof;
+  return partMinExpression + '/' + totalMinExpression;
 }
 
-console.log(getCompleted("01:00:00", "03:00:00"));
+console.log(getCompleted('02:20:20', '03:30:30'));
+console.log(getCompleted('00:10:00', '01:00:00'));
