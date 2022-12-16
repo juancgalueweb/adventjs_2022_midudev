@@ -35,25 +35,22 @@ getOptimalPath([[1], [1, 5], [7, 5, 8], [9, 4, 1, 3]]) // 8
 1 -> 1 -> 5 -> 1
 
 A tener en cuenta:
-
 Ten en cuenta que sólo puedes bajar en diagonal y hacia abajo desde cualquier posición.
 La primera posición de la pirámide puede ser diferente a 0.
 Las pirámides pueden tener hasta 10 niveles.
 Los números en las pirámides pueden ser negativos.
-
 */
 
 function getOptimalPath(path: number[][]): number {
+  //La función reduceRight recorre el arreglo de derecha a izquierda, es decir, desde la base del binary tree
   const result = path.reduceRight((accumulator, current) => {
-    // console.log('Acc', accumulator, 'Cur', current);
     return current.map((val, index) => {
-      // console.log('Val', val, 'index', index);
-      const res = val + Math.min(accumulator[index], accumulator[index + 1]);
-      // console.log('res', res);
-      return res;
+      //Recorro el arreglo 'current' y cada valor lo sumo con el menor de sus diagonales posibles de su base (el accumulator) y lo que retorno es el próximo 'accumalator' actualizado con los resultados de esa suma
+      return val + Math.min(accumulator[index], accumulator[index + 1]);
     });
   });
   return result[0];
 }
 
 console.log(getOptimalPath([[0], [3, 4], [9, 8, 1]]));
+console.log(getOptimalPath([[1], [1, 5], [7, 5, 8], [9, 4, 1, 3]]));
