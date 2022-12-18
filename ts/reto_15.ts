@@ -35,7 +35,7 @@ Hay que seguir la fórmula para saber qué decoración colocar en cada posición
 */
 
 function decorateTree(base: string): string[] {
-  type Prop = {
+  interface Prop {
     PP: string;
     BB: string;
     RR: string;
@@ -45,7 +45,7 @@ function decorateTree(base: string): string[] {
     RB: string;
     PR: string;
     RP: string;
-  };
+  }
 
   const dict: Prop = {
     PP: 'P',
@@ -67,9 +67,9 @@ function decorateTree(base: string): string[] {
   while (tree.length < baseArrayLength) {
     baseArray.forEach((_, index, array) => {
       if (index < array.length - 1) {
-        let expr;
-        expr = array[index].concat(array[index + 1]);
-        console.log(dict.BB);
+        result.push(
+          dict[array[index].concat(array[index + 1]) as keyof typeof dict]
+        );
       }
     });
     tree.unshift(result.join(' '));
@@ -79,8 +79,8 @@ function decorateTree(base: string): string[] {
   return tree;
 }
 
-// console.log(decorateTree('B P R P'));
+console.log(decorateTree('B P R P'));
 console.log(decorateTree('B B'));
-// console.log(decorateTree('B B P R P R R'));
+console.log(decorateTree('B B P R P R R'));
 
 //Este resultado no es óptimo según la puntuación obtenida, pero funciona y lo entiendo
