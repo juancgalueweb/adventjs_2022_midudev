@@ -35,6 +35,30 @@ Hay que seguir la fórmula para saber qué decoración colocar en cada posición
 */
 
 function decorateTree(base: string): string[] {
+  type Prop = {
+    PP: string;
+    BB: string;
+    RR: string;
+    BP: string;
+    PB: string;
+    BR: string;
+    RB: string;
+    PR: string;
+    RP: string;
+  };
+
+  const dict: Prop = {
+    PP: 'P',
+    BB: 'B',
+    RR: 'R',
+    BP: 'R',
+    PB: 'R',
+    BR: 'P',
+    RB: 'P',
+    PR: 'B',
+    RP: 'B',
+  };
+
   const tree: string[] = [];
   let baseArray: string[] = base.split(' ');
   const baseArrayLength = baseArray.length;
@@ -43,35 +67,9 @@ function decorateTree(base: string): string[] {
   while (tree.length < baseArrayLength) {
     baseArray.forEach((_, index, array) => {
       if (index < array.length - 1) {
-        switch (array[index].concat(array[index + 1])) {
-          case 'PP':
-            result.push('P');
-            break;
-          case 'RR':
-            result.push('R');
-            break;
-          case 'BB':
-            result.push('B');
-            break;
-          case 'BP':
-            result.push('R');
-            break;
-          case 'PB':
-            result.push('R');
-            break;
-          case 'RP':
-            result.push('B');
-            break;
-          case 'PR':
-            result.push('B');
-            break;
-          case 'BR':
-            result.push('P');
-            break;
-          case 'RB':
-            result.push('P');
-            break;
-        }
+        let expr;
+        expr = array[index].concat(array[index + 1]);
+        console.log(dict.BB);
       }
     });
     tree.unshift(result.join(' '));
@@ -82,7 +80,7 @@ function decorateTree(base: string): string[] {
 }
 
 // console.log(decorateTree('B P R P'));
-// console.log(decorateTree('B B'));
-console.log(decorateTree('B B P R P R R'));
+console.log(decorateTree('B B'));
+// console.log(decorateTree('B B P R P R R'));
 
 //Este resultado no es óptimo según la puntuación obtenida, pero funciona y lo entiendo
