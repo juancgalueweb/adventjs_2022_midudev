@@ -54,7 +54,7 @@ function printTable(gifts: { name: string; quantity: number }[]): string {
   });
   const longestGiftName: number = Math.max(...giftsNamesLen);
   const longestGiftQty: number = Math.max(...giftsQtyLen);
-  longestGiftName <= 4
+  longestGiftName < 4
     ? (topLeft = '+'.repeat(8)) && (giftRightGap = ' '.repeat(1))
     : (topLeft = '++' + '+'.repeat(longestGiftName) + '++') &&
       (giftRightGap = ' '.repeat(longestGiftName + 1 - 4));
