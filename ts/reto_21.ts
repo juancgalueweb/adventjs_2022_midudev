@@ -47,7 +47,6 @@ function printTable(gifts: { name: string; quantity: number }[]): string {
   const giftsNamesLen: number[] = [];
   const giftsQtyLen: number[] = [];
   let giftsToPrint: string = '';
-  let space: string = '';
   gifts.forEach((item) => {
     giftsNamesLen.push(item.name.length);
     giftsQtyLen.push(item.quantity.toString().length);
@@ -67,7 +66,7 @@ function printTable(gifts: { name: string; quantity: number }[]): string {
     giftsToPrint +=
       '| ' +
       item.name +
-      ' '.repeat(longestGiftName - item.name.length) +
+      ' '.repeat(topLeft.length - 'Gift'.length - item.name.length) +
       ' | ' +
       item.quantity.toString() +
       ' '.repeat(topRight.length - 3 - item.quantity.toString().length) +
@@ -110,4 +109,4 @@ const gifts3 = [
   { name: 'Toy', quantity: 12 },
   { name: 'Mic', quantity: 123 },
 ];
-console.log(printTable(gifts3));
+console.log(printTable(gifts2));
